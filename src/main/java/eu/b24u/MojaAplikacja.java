@@ -21,8 +21,8 @@ public class MojaAplikacja extends Aplikacja {
 	@Override
 	public void budujScene(Scena scena, Plotno plotno) {
 		scena.ustawTytul("Kółko i krzyżyk");
-		scena.ustawRozmiar(500, 500);
-		plotno.ustawRozmiar(500, 500);
+		scena.ustawRozmiar(660, 635);
+		plotno.ustawRozmiar(660, 635);
 
 		plansza = new Plansza(plotno);
 
