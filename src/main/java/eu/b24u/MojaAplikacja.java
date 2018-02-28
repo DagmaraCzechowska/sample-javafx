@@ -8,12 +8,20 @@ import eu.b24u.javafx.Scena;
 public class MojaAplikacja extends Aplikacja {
 
 	Plansza plansza;
+	boolean czyKolko;
 
 
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
 		Program.wypisz("x=" + x + " y=" + y);
 		// plotno.czysc();
+		if (czyKolko) {
+			plansza.rysujKolko(x, y);
+			czyKolko = false;
+		} else {
+			plansza.rysujKrzyzyk(x, y);
+			czyKolko = true;
+		}
 
 	}
 
@@ -25,7 +33,7 @@ public class MojaAplikacja extends Aplikacja {
 		plotno.ustawRozmiar(660, 635);
 
 		plansza = new Plansza(plotno);
-
+		czyKolko = true;
 
 	}
 

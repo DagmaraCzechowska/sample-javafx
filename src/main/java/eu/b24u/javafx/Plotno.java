@@ -21,18 +21,18 @@ public class Plotno extends Canvas {
 		rysujOkrag(startx, starty, promien, Color.BLUE);
 	}
 
-	public void rysujOkrag(int startx, int starty, int promien, Color color) {
+	public void rysujOkrag(double x, double y, int promien, Color color) {
 		context.setFill(color);
 		context.setStroke(color);
 		context.setLineWidth(5);
-		context.fillOval(startx, starty, promien, promien);
+		context.fillOval(x, y, promien, promien);
 	}
 
-	public void rysujLinie(int startx, int starty, int koniecx, int koniecy) {
+	public void rysujLinie(double d, double e, double f, double g) {
 		context.setFill(Color.BLUE);
 		context.setStroke(Color.BLUE);
 		context.setLineWidth(5);
-		context.strokeLine(startx, starty, koniecx, koniecy);
+		context.strokeLine(d, e, f, g);
 
 	}
 
