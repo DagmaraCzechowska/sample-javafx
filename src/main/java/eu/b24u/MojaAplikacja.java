@@ -13,6 +13,7 @@ public class MojaAplikacja extends Aplikacja {
 	Plansza plansza;
 	boolean czyKolko;
 	private Prostokat prostokat00;
+	private Prostokat prostokat11;
 
 
 	@Override
@@ -21,13 +22,22 @@ public class MojaAplikacja extends Aplikacja {
 		// plotno.czysc();
 		boolean czyZawieraProstokat00 = prostokat00.czyZawieraPunkt(x, y);
 		Program.wypisz("Czy kliknieto w prostokat 0 0 :" + czyZawieraProstokat00);
+		boolean czyZawieraProstokat11 = prostokat11.czyZawieraPunkt(x, y);
+		Program.wypisz("Czy kliknieto w prostokat 1 1 :" + czyZawieraProstokat11);
 
 		if (czyKolko) {
 			// jezeli czyZawieraProstokat00 prawda rysuj rysujKolkoWKwadracie
-			plansza.rysujKolko(x, y);
+			if (czyZawieraProstokat00) {
+				rysujKolkoWKwadracie(plotno, 0, 0);
+			}
+			// plansza.rysujKolko(x, y);
+
 			czyKolko = false;
 		} else {
-			plansza.rysujKrzyzyk(x, y);
+			if (czyZawieraProstokat00) {
+				rysujKrzyzykWKwadracie(plotno, 0, 0);
+			}
+			// plansza.rysujKrzyzyk(x, y);
 			czyKolko = true;
 		}
 
@@ -46,10 +56,10 @@ public class MojaAplikacja extends Aplikacja {
 
 
 		prostokat00 = rysujKwadratKolkoIKrzyzyk(plotno, 0, 0);
-		rysujKwadratKolkoIKrzyzyk(plotno, 1, 1);
+		prostokat11 = rysujKwadratKolkoIKrzyzyk(plotno, 1, 1);
 
-		rysujKolkoWKwadracie(plotno, 0, 0);
-		rysujKrzyzykWKwadracie(plotno, 1, 1);
+		// rysujKolkoWKwadracie(plotno, 0, 0);
+		// rysujKrzyzykWKwadracie(plotno, 1, 1);
 	}
 
 	/**
@@ -60,9 +70,9 @@ public class MojaAplikacja extends Aplikacja {
 	 */
 	private Prostokat rysujKwadratKolkoIKrzyzyk(Plotno plotno, int x, int y) {
 		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
-		plotno.rysujProstokat(punktPoczatkowy, new Punkt(180, 180), Color.BLACK);
+		// plotno.rysujProstokat(punktPoczatkowy, new Punkt(180, 180), Color.LIGHTGRAY);
 		Punkt wysokoscISzerokosc = new Punkt(180, 180);
-		plotno.rysujProstokat(punktPoczatkowy, wysokoscISzerokosc, Color.BLACK);
+		plotno.rysujProstokat(punktPoczatkowy, wysokoscISzerokosc, Color.LIGHTGRAY);
 		return new Prostokat(punktPoczatkowy, wysokoscISzerokosc);
 	}
 
@@ -75,9 +85,10 @@ public class MojaAplikacja extends Aplikacja {
 	private void rysujKrzyzykWKwadracie(Plotno plotno, int x, int y) {
 		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
 		int wymiarKwadratu = 180;
-		// rysuj linie pierwsza na ukos
-		// rysuj linie druga na ukos
-
+		plotno.rysujLinie(punktPoczatkowy.x, punktPoczatkowy.y, punktPoczatkowy.x + wymiarKwadratu,
+				punktPoczatkowy.y + wymiarKwadratu);
+		plotno.rysujLinie(punktPoczatkowy.x + wymiarKwadratu, punktPoczatkowy.y, punktPoczatkowy.x,
+				punktPoczatkowy.y + wymiarKwadratu);
 	}
 
 	/**
@@ -88,8 +99,8 @@ public class MojaAplikacja extends Aplikacja {
 	 */
 	private void rysujKolkoWKwadracie(Plotno plotno, int x, int y) {
 		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
-		// rysuj okrag niebieski domyslny
-		// rysuj okrag bialy
+		plotno.rysujOkrag(punktPoczatkowy.x, punktPoczatkowy.y, 180);
+		plotno.rysujOkrag(punktPoczatkowy.x + 5, punktPoczatkowy.y + 5, 170, Color.WHITE);
 
 	}
 	@Override
