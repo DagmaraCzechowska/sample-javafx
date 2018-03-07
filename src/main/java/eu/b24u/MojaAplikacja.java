@@ -74,6 +74,10 @@ public class MojaAplikacja extends Aplikacja {
 	 */
 	private void rysujKrzyzykWKwadracie(Plotno plotno, int x, int y) {
 		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		int wymiarKwadratu = 180;
+		// rysuj linie pierwsza na ukos
+		// rysuj linie druga na ukos
+
 	}
 
 	/**
@@ -84,6 +88,9 @@ public class MojaAplikacja extends Aplikacja {
 	 */
 	private void rysujKolkoWKwadracie(Plotno plotno, int x, int y) {
 		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		// rysuj okrag niebieski domyslny
+		// rysuj okrag bialy
+
 	}
 	@Override
 	public void zdarzeniePrzeciagniecieMyszka(double x, double y, Plotno plotno) {
