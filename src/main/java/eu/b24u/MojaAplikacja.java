@@ -4,6 +4,8 @@ import eu.b24u.javafx.Aplikacja;
 import eu.b24u.javafx.Plotno;
 import eu.b24u.javafx.Program;
 import eu.b24u.javafx.Scena;
+import eu.b24u.javafx.element.Punkt;
+import javafx.scene.paint.Color;
 
 public class MojaAplikacja extends Aplikacja {
 
@@ -35,6 +37,7 @@ public class MojaAplikacja extends Aplikacja {
 		plansza = new Plansza(plotno);
 		czyKolko = true;
 
+		plotno.rysujProstokat(new Punkt(10, 10), new Punkt(400, 400), Color.BLACK);
 	}
 
 	@Override

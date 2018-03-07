@@ -1,5 +1,6 @@
 package eu.b24u.javafx;
 
+import eu.b24u.javafx.element.Punkt;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -34,6 +35,13 @@ public class Plotno extends Canvas {
 		context.setLineWidth(5);
 		context.strokeLine(d, e, f, g);
 
+	}
+
+	public void rysujProstokat(Punkt p1, Punkt p2, Color green) {
+		context.setFill(green);
+		context.setStroke(green);
+		context.setLineWidth(5);
+		context.strokeRect(p1.x, p1.y, p2.x, p2.y);
 	}
 
 	public void ustawRozmiar(double wysokosc, double szerokosc) {
