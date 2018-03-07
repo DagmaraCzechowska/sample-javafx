@@ -37,9 +37,19 @@ public class Plotno extends Canvas {
 
 	}
 
-	public void rysujProstokat(Punkt p1, Punkt p2, Color green) {
-		context.setFill(green);
-		context.setStroke(green);
+	/**
+	 * Metoda służy do rysowania prostokąta pomiędzy 2 punktami.
+	 * 
+	 * @param p1
+	 *            to punkt 1
+	 * @param p2
+	 *            punkt 2
+	 * @param kolor
+	 *            to kolor prostokąta.
+	 */
+	public void rysujProstokat(Punkt p1, Punkt p2, Color kolor) {
+		context.setFill(kolor);
+		context.setStroke(kolor);
 		context.setLineWidth(5);
 		context.strokeRect(p1.x, p1.y, p2.x, p2.y);
 	}
