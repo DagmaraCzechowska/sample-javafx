@@ -19,6 +19,15 @@ public class Prostokat extends Rectangle {
 		return Math.abs(p1.y - p2.y);
 	}
 
+	/**
+	 * metoda sprawdza czy punkt x,y zawiera się w prostokącie
+	 * 
+	 * @param x
+	 *            to współrzędna pozioma
+	 * @param y
+	 *            to współrzędna pionowa
+	 * @return prawda jak zawiera się w prostokącie a fałsz jeśli nie
+	 */
 	public boolean czyZawieraPunkt(double x, double y) {
 		return this.contains(x, y);
 	}

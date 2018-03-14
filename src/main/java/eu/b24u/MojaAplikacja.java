@@ -4,6 +4,7 @@ import eu.b24u.javafx.Aplikacja;
 import eu.b24u.javafx.Plotno;
 import eu.b24u.javafx.Program;
 import eu.b24u.javafx.Scena;
+import eu.b24u.javafx.element.Lista;
 import eu.b24u.javafx.element.Prostokat;
 import eu.b24u.javafx.element.Punkt;
 import javafx.scene.paint.Color;
@@ -12,20 +13,23 @@ public class MojaAplikacja extends Aplikacja {
 
 	Plansza plansza;
 	boolean czyKolko;
-	private Prostokat prostokat00;
-	private Prostokat prostokat11;
+	private Lista<Prostokat> listaKratek;
+
 
 
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
 		Program.wypisz("x=" + x + " y=" + y);
 		// plotno.czysc();
-		boolean czyZawieraProstokat00 = prostokat00.czyZawieraPunkt(x, y);
-		Program.wypisz("Czy kliknieto w prostokat 0 0 :" + czyZawieraProstokat00);
-		boolean czyZawieraProstokat11 = prostokat11.czyZawieraPunkt(x, y);
-		Program.wypisz("Czy kliknieto w prostokat 1 1 :" + czyZawieraProstokat11);
+		// boolean czyZawieraProstokat00 = prostokat00.czyZawieraPunkt(x, y);
+		// Program.wypisz("Czy kliknieto w prostokat 0 0 :" + czyZawieraProstokat00);
+		// boolean czyZawieraProstokat11 = prostokat11.czyZawieraPunkt(x, y);
+		// Program.wypisz("Czy kliknieto w prostokat 1 1 :" + czyZawieraProstokat11);
 
 		// TODO MojaAplikacja 2 Sprawdzaj na liscie w ktorym jest kwadracie
+		for (Prostokat elementListy : listaKratek) {
+			elementListy.czyZawieraPunkt(x, y);
+		}
 		// TODO MojaAplikacja 3 Chodzenie po liscie elementow, poznajemy jak sprawdzac
 		// elementy w
 		// liscie
@@ -35,16 +39,16 @@ public class MojaAplikacja extends Aplikacja {
 
 		if (czyKolko) {
 			// jezeli czyZawieraProstokat00 prawda rysuj rysujKolkoWKwadracie
-			if (czyZawieraProstokat00) {
-				rysujKolkoWKwadracie(plotno, 0, 0);
-			}
+			// if (czyZawieraProstokat00) {
+			// rysujKolkoWKwadracie(plotno, 0, 0);
+			// }
 			// plansza.rysujKolko(x, y);
 
 			czyKolko = false;
 		} else {
-			if (czyZawieraProstokat00) {
-				rysujKrzyzykWKwadracie(plotno, 0, 0);
-			}
+			// if (czyZawieraProstokat00) {
+			// rysujKrzyzykWKwadracie(plotno, 0, 0);
+			// }
 			// plansza.rysujKrzyzyk(x, y);
 			czyKolko = true;
 		}
@@ -63,8 +67,11 @@ public class MojaAplikacja extends Aplikacja {
 
 
 		// TODO MojaAplikacja 1 Dodaj do listy prostokatow
-		prostokat00 = rysujKwadratKolkoIKrzyzyk(plotno, 0, 0);
-		prostokat11 = rysujKwadratKolkoIKrzyzyk(plotno, 1, 1);
+		listaKratek = new Lista<Prostokat>();
+
+		rysujKwadratKolkoIKrzyzyk(plotno, 0, 0, listaKratek);
+		rysujKwadratKolkoIKrzyzyk(plotno, 1, 0, listaKratek);
+		rysujKwadratKolkoIKrzyzyk(plotno, 2, 0, listaKratek);
 
 		// rysujKolkoWKwadracie(plotno, 0, 0);
 		// rysujKrzyzykWKwadracie(plotno, 1, 1);
@@ -75,13 +82,15 @@ public class MojaAplikacja extends Aplikacja {
 	 * @param plotno
 	 * @param x
 	 * @param y
+	 * @param listaKratek
 	 */
-	private Prostokat rysujKwadratKolkoIKrzyzyk(Plotno plotno, int x, int y) {
+	private void rysujKwadratKolkoIKrzyzyk(Plotno plotno, int x, int y, Lista listaKratek) {
 		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
 		// plotno.rysujProstokat(punktPoczatkowy, new Punkt(180, 180), Color.LIGHTGRAY);
 		Punkt wysokoscISzerokosc = new Punkt(180, 180);
 		plotno.rysujProstokat(punktPoczatkowy, wysokoscISzerokosc, Color.LIGHTGRAY);
-		return new Prostokat(punktPoczatkowy, wysokoscISzerokosc);
+		listaKratek.dodaj(new Prostokat(punktPoczatkowy, wysokoscISzerokosc));
+		// return new Prostokat(punktPoczatkowy, wysokoscISzerokosc);
 	}
 
 	/**
@@ -113,7 +122,7 @@ public class MojaAplikacja extends Aplikacja {
 	}
 	@Override
 	public void zdarzeniePrzeciagniecieMyszka(double x, double y, Plotno plotno) {
-		plotno.rysujPunkt(x, y);
+		// plotno.rysujPunkt(x, y);
 	}
 
 }
