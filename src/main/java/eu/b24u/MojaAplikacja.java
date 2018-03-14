@@ -25,6 +25,14 @@ public class MojaAplikacja extends Aplikacja {
 		boolean czyZawieraProstokat11 = prostokat11.czyZawieraPunkt(x, y);
 		Program.wypisz("Czy kliknieto w prostokat 1 1 :" + czyZawieraProstokat11);
 
+		// TODO MojaAplikacja 2 Sprawdzaj na liscie w ktorym jest kwadracie
+		// TODO MojaAplikacja 3 Chodzenie po liscie elementow, poznajemy jak sprawdzac
+		// elementy w
+		// liscie
+		// TODO MojaAplikacja 4 sprawdzenie czy punkt klikniety zawiera sie w danym
+		// kwadracie
+		// rysuj w odpowiednim kwadracie krzyzyk lub kolko
+
 		if (czyKolko) {
 			// jezeli czyZawieraProstokat00 prawda rysuj rysujKolkoWKwadracie
 			if (czyZawieraProstokat00) {
@@ -54,7 +62,7 @@ public class MojaAplikacja extends Aplikacja {
 		czyKolko = true;
 
 
-
+		// TODO MojaAplikacja 1 Dodaj do listy prostokatow
 		prostokat00 = rysujKwadratKolkoIKrzyzyk(plotno, 0, 0);
 		prostokat11 = rysujKwadratKolkoIKrzyzyk(plotno, 1, 1);
 
@@ -105,7 +113,6 @@ public class MojaAplikacja extends Aplikacja {
 	}
 	@Override
 	public void zdarzeniePrzeciagniecieMyszka(double x, double y, Plotno plotno) {
-		// TODO Auto-generated method stub
 		plotno.rysujPunkt(x, y);
 	}
 
