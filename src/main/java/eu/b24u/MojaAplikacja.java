@@ -15,8 +15,6 @@ public class MojaAplikacja extends Aplikacja {
 	boolean czyKolko;
 	private Lista<Prostokat> listaKratek;
 
-
-
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
 		Program.wypisz("x=" + x + " y=" + y);
@@ -28,7 +26,11 @@ public class MojaAplikacja extends Aplikacja {
 
 		// TODO MojaAplikacja 2 Sprawdzaj na liscie w ktorym jest kwadracie
 		for (Prostokat elementListy : listaKratek) {
-			elementListy.czyZawieraPunkt(x, y);
+			boolean czyZawiera = elementListy.czyZawieraPunkt(x, y);
+			if (czyZawiera) {
+				// TODO MojaAplikacja 2a rysowanie kolka lub krzyzyka w danej kratce
+				break;
+			}
 		}
 		// TODO MojaAplikacja 3 Chodzenie po liscie elementow, poznajemy jak sprawdzac
 		// elementy w
@@ -55,7 +57,6 @@ public class MojaAplikacja extends Aplikacja {
 
 	}
 
-
 	@Override
 	public void budujScene(Scena scena, Plotno plotno) {
 		scena.ustawTytul("Kółko i krzyżyk");
@@ -64,7 +65,6 @@ public class MojaAplikacja extends Aplikacja {
 
 		plansza = new Plansza(plotno);
 		czyKolko = true;
-
 
 		// TODO MojaAplikacja 1 Dodaj do listy prostokatow
 		listaKratek = new Lista<Prostokat>();
@@ -120,6 +120,7 @@ public class MojaAplikacja extends Aplikacja {
 		plotno.rysujOkrag(punktPoczatkowy.x + 5, punktPoczatkowy.y + 5, 170, Color.WHITE);
 
 	}
+
 	@Override
 	public void zdarzeniePrzeciagniecieMyszka(double x, double y, Plotno plotno) {
 		// plotno.rysujPunkt(x, y);
