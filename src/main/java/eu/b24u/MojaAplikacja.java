@@ -21,12 +21,10 @@ public class MojaAplikacja extends Aplikacja {
 
 		// TODO metoda ktora znajduje klikniety kwadrat
 
-		for (Prostokat elementListy : listaKratek) {
-			boolean czyZawiera = elementListy.czyZawieraPunkt(x, y);
-			if (czyZawiera) {
-				break;
-			}
-		}
+		// TypZmiennej nazwaZmiennej = wartosc;
+		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
+
+
 		// TODO MojaAplikacja 2a rysowanie kolka lub krzyzyka w danej kratce
 		// rysujKrzyzykWKwadracie(plotno, elementListy.x, elementListy.y);
 
@@ -41,6 +39,7 @@ public class MojaAplikacja extends Aplikacja {
 			// rysujKolkoWKwadracie(plotno, 0, 0);
 			// }
 			// plansza.rysujKolko(x, y);
+			rysujKolkoWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
 
 			czyKolko = false;
 		} else {
@@ -48,9 +47,20 @@ public class MojaAplikacja extends Aplikacja {
 			// rysujKrzyzykWKwadracie(plotno, 0, 0);
 			// }
 			// plansza.rysujKrzyzyk(x, y);
+			rysujKrzyzykWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
 			czyKolko = true;
 		}
 
+	}
+
+	private Prostokat zwrocProstokatKlikniety(double x, double y) {
+		for (Prostokat elementListy : listaKratek) {
+			boolean czyZawiera = elementListy.czyZawieraPunkt(x, y);
+			if (czyZawiera) {
+				return elementListy;
+			}
+		}
+		return null;
 	}
 
 	@Override
