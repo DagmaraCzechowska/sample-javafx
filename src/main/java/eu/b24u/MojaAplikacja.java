@@ -18,26 +18,22 @@ public class MojaAplikacja extends Aplikacja {
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
 		Program.wypisz("x=" + x + " y=" + y);
-		// plotno.czysc();
-		// boolean czyZawieraProstokat00 = prostokat00.czyZawieraPunkt(x, y);
-		// Program.wypisz("Czy kliknieto w prostokat 0 0 :" + czyZawieraProstokat00);
-		// boolean czyZawieraProstokat11 = prostokat11.czyZawieraPunkt(x, y);
-		// Program.wypisz("Czy kliknieto w prostokat 1 1 :" + czyZawieraProstokat11);
 
-		// TODO MojaAplikacja 2 Sprawdzaj na liscie w ktorym jest kwadracie
+		// TODO metoda ktora znajduje klikniety kwadrat
+
 		for (Prostokat elementListy : listaKratek) {
 			boolean czyZawiera = elementListy.czyZawieraPunkt(x, y);
 			if (czyZawiera) {
-				// TODO MojaAplikacja 2a rysowanie kolka lub krzyzyka w danej kratce
 				break;
 			}
 		}
-		// TODO MojaAplikacja 3 Chodzenie po liscie elementow, poznajemy jak sprawdzac
-		// elementy w
+		// TODO MojaAplikacja 2a rysowanie kolka lub krzyzyka w danej kratce
+		// rysujKrzyzykWKwadracie(plotno, elementListy.x, elementListy.y);
+
+		// TODO rysowanie w znalezionym kwadracie kolka lub krzyzyka
 		// liscie
 		// TODO MojaAplikacja 4 sprawdzenie czy punkt klikniety zawiera sie w danym
 		// kwadracie
-		// rysuj w odpowiednim kwadracie krzyzyk lub kolko
 
 		if (czyKolko) {
 			// jezeli czyZawieraProstokat00 prawda rysuj rysujKolkoWKwadracie
@@ -100,7 +96,9 @@ public class MojaAplikacja extends Aplikacja {
 	 * @param y
 	 */
 	private void rysujKrzyzykWKwadracie(Plotno plotno, int x, int y) {
-		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		// Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		Punkt punktPoczatkowy = new Punkt(x, y);
+
 		int wymiarKwadratu = 180;
 		plotno.rysujLinie(punktPoczatkowy.x, punktPoczatkowy.y, punktPoczatkowy.x + wymiarKwadratu,
 				punktPoczatkowy.y + wymiarKwadratu);
@@ -115,7 +113,9 @@ public class MojaAplikacja extends Aplikacja {
 	 * @param y
 	 */
 	private void rysujKolkoWKwadracie(Plotno plotno, int x, int y) {
-		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		// Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		Punkt punktPoczatkowy = new Punkt(x, y);
+
 		plotno.rysujOkrag(punktPoczatkowy.x, punktPoczatkowy.y, 180);
 		plotno.rysujOkrag(punktPoczatkowy.x + 5, punktPoczatkowy.y + 5, 170, Color.WHITE);
 
