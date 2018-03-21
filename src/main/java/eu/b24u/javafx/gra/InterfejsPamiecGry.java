@@ -10,14 +10,17 @@ public interface InterfejsPamiecGry {
 	public void utworzListeKratek();
 
 	/**
-	 * Metoda sprawdza czy kratka jest pusta
+	 * Metoda sprawdza czy kratka jest pusta ,czyli sprawdza czy jest na liście
+	 * kratek
 	 * 
 	 * @return prawda lub falsz
 	 */
 	public boolean czyKratkaJestPusta();
 
 	/**
-	 * Metoda sprawdza czy jest juz wygrana
+	 * Metoda sprawdza czy jest juz wygrana ,czyli sprawdza na liście kratek czy
+	 * krzyżyk lub kółko ma wypełnione trzy wartości po rząd w pionie, poziomie czy
+	 * na ukos
 	 * 
 	 * @return prawda lub falsz
 	 */
@@ -25,6 +28,7 @@ public interface InterfejsPamiecGry {
 
 	/**
 	 * Metoda dodaj kliknieta kratke do pamieci gry do listy kratek
+	 * 
 	 */
 	public void dodajKliknietaKratke(double x, double y);
 
