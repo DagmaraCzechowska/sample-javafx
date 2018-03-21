@@ -1,6 +1,7 @@
 package eu.b24u.javafx.gra;
 
 import eu.b24u.javafx.element.Lista;
+import eu.b24u.javafx.element.Punkt;
 
 public class PamiecGry implements InterfejsPamiecGry {
 
@@ -21,6 +22,7 @@ public class PamiecGry implements InterfejsPamiecGry {
 	 * Konstruktor tworzy pamiec gry , tworzy liste kratek
 	 */
 	public PamiecGry() {
+		utworzListeKratek();
 	}
 
 	@Override
@@ -39,6 +41,18 @@ public class PamiecGry implements InterfejsPamiecGry {
 	public boolean czyWygrana() {
 		// TODO czyWygrana
 		return false;
+	}
+
+	@Override
+	public void dodajKliknietaKratke(double x, double y) {
+		// TODO dodajKliknietaKratke
+
+	}
+
+	@Override
+	public Punkt kliknietaKratka(double x, double y) {
+		// TODO kliknietaKratka
+		return null;
 	}
 
 }

@@ -7,46 +7,28 @@ import eu.b24u.javafx.Scena;
 import eu.b24u.javafx.element.Lista;
 import eu.b24u.javafx.element.Prostokat;
 import eu.b24u.javafx.element.Punkt;
+import eu.b24u.javafx.gra.PamiecGry;
 import javafx.scene.paint.Color;
 
 public class MojaAplikacja extends Aplikacja {
 
 	Plansza plansza;
 	boolean czyKolko;
-	private Lista<Prostokat> listaKratek;
+	private Lista<Prostokat> listaProstokatow;
+	private PamiecGry pamiecGry;
 
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
 		Program.wypisz("x=" + x + " y=" + y);
 
-		// TODO metoda ktora znajduje klikniety kwadrat
-
-		// TypZmiennej nazwaZmiennej = wartosc;
 		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
 
-
-		// TODO MojaAplikacja 2a rysowanie kolka lub krzyzyka w danej kratce
-		// rysujKrzyzykWKwadracie(plotno, elementListy.x, elementListy.y);
-
-		// TODO rysowanie w znalezionym kwadracie kolka lub krzyzyka
-		// liscie
-		// TODO MojaAplikacja 4 sprawdzenie czy punkt klikniety zawiera sie w danym
-		// kwadracie
+		pamiecGry.dodajKliknietaKratke(x, y);
 
 		if (czyKolko) {
-			// jezeli czyZawieraProstokat00 prawda rysuj rysujKolkoWKwadracie
-			// if (czyZawieraProstokat00) {
-			// rysujKolkoWKwadracie(plotno, 0, 0);
-			// }
-			// plansza.rysujKolko(x, y);
 			rysujKolkoWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
-
 			czyKolko = false;
 		} else {
-			// if (czyZawieraProstokat00) {
-			// rysujKrzyzykWKwadracie(plotno, 0, 0);
-			// }
-			// plansza.rysujKrzyzyk(x, y);
 			rysujKrzyzykWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
 			czyKolko = true;
 		}
@@ -54,7 +36,7 @@ public class MojaAplikacja extends Aplikacja {
 	}
 
 	private Prostokat zwrocProstokatKlikniety(double x, double y) {
-		for (Prostokat elementListy : listaKratek) {
+		for (Prostokat elementListy : listaProstokatow) {
 			boolean czyZawiera = elementListy.czyZawieraPunkt(x, y);
 			if (czyZawiera) {
 				return elementListy;
@@ -62,6 +44,7 @@ public class MojaAplikacja extends Aplikacja {
 		}
 		return null;
 	}
+
 
 	@Override
 	public void budujScene(Scena scena, Plotno plotno) {
@@ -72,15 +55,15 @@ public class MojaAplikacja extends Aplikacja {
 		plansza = new Plansza(plotno);
 		czyKolko = true;
 
-		// TODO MojaAplikacja 1 Dodaj do listy prostokatow
-		listaKratek = new Lista<Prostokat>();
+		pamiecGry = new PamiecGry();
 
-		rysujKwadratKolkoIKrzyzyk(plotno, 0, 0, listaKratek);
-		rysujKwadratKolkoIKrzyzyk(plotno, 1, 0, listaKratek);
-		rysujKwadratKolkoIKrzyzyk(plotno, 2, 0, listaKratek);
+		listaProstokatow = new Lista<Prostokat>();
 
-		// rysujKolkoWKwadracie(plotno, 0, 0);
-		// rysujKrzyzykWKwadracie(plotno, 1, 1);
+		rysujKwadratKolkoIKrzyzyk(plotno, 0, 0, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 1, 0, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 2, 0, listaProstokatow);
+
+
 	}
 
 	/**

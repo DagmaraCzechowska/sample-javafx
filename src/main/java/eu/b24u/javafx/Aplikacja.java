@@ -31,6 +31,15 @@ public abstract class Aplikacja extends Application {
 		scena.get().show();
     }
 
+	/**
+	 * Metoda tworzy aplikacje ustawia tytul, rozmiar i zawartosc<br>
+	 * Metoda wykonuje sie tylko raz! podczas tworzenia aplikacji
+	 * 
+	 * @param scena
+	 *            zawartosc okna
+	 * @param plotno
+	 *            miejsce gdzie rysujemy
+	 */
 	public abstract void budujScene(Scena scena, Plotno plotno);
 
 	public abstract void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno);
