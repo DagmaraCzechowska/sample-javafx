@@ -1,8 +1,10 @@
 package eu.b24u.javafx.gra;
 
+import eu.b24u.javafx.element.Lista;
+
 public class PamiecGry {
 
-	// TODO PamiecGry 1 stworzenie klasy kratka posiada enum KOLKO,KRZYZYK
+	Lista listaKratek;
 	// TODO PamiecGry 2 Lista kratek
 	// TODO PamiecGry 3 Sprawdzenie czy kratka jest pusta
 	// TODO PamiecGry 4 sprawdzenie czy ktos wygral
