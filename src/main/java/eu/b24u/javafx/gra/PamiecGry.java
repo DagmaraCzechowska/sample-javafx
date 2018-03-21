@@ -2,7 +2,7 @@ package eu.b24u.javafx.gra;
 
 import eu.b24u.javafx.element.Lista;
 
-public class PamiecGry {
+public class PamiecGry implements InterfejsPamiecGry {
 
 	Lista listaKratek;
 	// TODO PamiecGry 2 Lista kratek
@@ -23,5 +23,22 @@ public class PamiecGry {
 	public PamiecGry() {
 	}
 
+	@Override
+	public void utworzListeKratek() {
+		// TODO utworzListeKratek
+
+	}
+
+	@Override
+	public boolean czyKratkaJestPusta() {
+		// TODO czyKratkaJestPusta
+		return false;
+	}
+
+	@Override
+	public boolean czyWygrana() {
+		// TODO czyWygrana
+		return false;
+	}
 
 }
