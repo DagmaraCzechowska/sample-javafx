@@ -9,4 +9,19 @@ public class PamiecGry {
 	// TODO PamiecGry 3 Sprawdzenie czy kratka jest pusta
 	// TODO PamiecGry 4 sprawdzenie czy ktos wygral
 
+	public Lista getListaKratek() {
+		return listaKratek;
+	}
+
+	public void setListaKratek(Lista listaKratek) {
+		this.listaKratek = listaKratek;
+	}
+
+	/**
+	 * Konstruktor tworzy pamiec gry , tworzy liste kratek
+	 */
+	public PamiecGry() {
+	}
+
+
 }
