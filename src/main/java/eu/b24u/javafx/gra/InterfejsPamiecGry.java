@@ -1,6 +1,7 @@
 package eu.b24u.javafx.gra;
 
 import eu.b24u.javafx.element.Punkt;
+import eu.b24u.javafx.gra.Kratka.Figura;
 
 public interface InterfejsPamiecGry {
 
@@ -30,8 +31,7 @@ public interface InterfejsPamiecGry {
 	 * Metoda dodaj kliknieta kratke do pamieci gry do listy kratek
 	 * 
 	 */
-	public void dodajKliknietaKratke(double x, double y);
-
+	public void dodajKliknietaKratke(int i, int j, Figura kolko);
 	/**
 	 * Metoda zwraca wspolrzedne na kratce czyli x i y od 0 do 2
 	 * 
@@ -42,4 +42,6 @@ public interface InterfejsPamiecGry {
 	 * @return Punkt klikniety na kratce do gry
 	 */
 	public Punkt kliknietaKratka(double x, double y);
+
+	public Kratka pobierzKratke(int x, int y);
 }

@@ -23,7 +23,7 @@ public class MojaAplikacja extends Aplikacja {
 
 		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
 
-		pamiecGry.dodajKliknietaKratke(x, y);
+		// pamiecGry.dodajKliknietaKratke(x, y);
 
 		if (czyKolko) {
 			rysujKolkoWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
