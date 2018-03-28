@@ -4,6 +4,8 @@ import eu.b24u.javafx.element.Punkt;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 public class Plotno extends Canvas {
 
@@ -52,6 +54,23 @@ public class Plotno extends Canvas {
 		context.setStroke(kolor);
 		context.setLineWidth(5);
 		context.strokeRect(p1.x, p1.y, p2.x, p2.y);
+	}
+
+	/**
+	 * jest to metoda ktora wypisuje tekst na plotnie
+	 * 
+	 * @param x
+	 *            to wspolrzedna pozioma
+	 * @param y
+	 *            to wspolrzedna pionowa
+	 * @param tekst
+	 *            to napis wypisany na plotnie
+	 * @param kolor
+	 */
+	public void wypiszTekst(double x, double y, String tekst, Paint kolor) {
+		context.setFont(new Font("Arial", 12));
+		context.fillText(tekst, x, y);
+		context.setStroke(kolor);
 	}
 
 	public void ustawRozmiar(double wysokosc, double szerokosc) {

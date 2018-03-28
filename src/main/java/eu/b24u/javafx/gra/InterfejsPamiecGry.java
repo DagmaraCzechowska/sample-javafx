@@ -14,9 +14,13 @@ public interface InterfejsPamiecGry {
 	 * Metoda sprawdza czy kratka jest pusta ,czyli sprawdza czy jest na liście
 	 * kratek
 	 * 
-	 * @return prawda lub falsz
+	 * @param x
+	 *            współrzędna pozioma od 0 do 2
+	 * @param y
+	 *            współrzędna pionowa od 0 do 2
+	 * @return prawda lub fałsz
 	 */
-	public boolean czyKratkaJestPusta();
+	boolean czyKratkaJestPusta(int x, int y);
 
 	/**
 	 * Metoda sprawdza czy jest juz wygrana ,czyli sprawdza na liście kratek czy
@@ -44,4 +48,5 @@ public interface InterfejsPamiecGry {
 	public Punkt kliknietaKratka(double x, double y);
 
 	public Kratka pobierzKratke(int x, int y);
+
 }

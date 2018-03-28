@@ -7,6 +7,7 @@ import eu.b24u.javafx.Scena;
 import eu.b24u.javafx.element.Lista;
 import eu.b24u.javafx.element.Prostokat;
 import eu.b24u.javafx.element.Punkt;
+import eu.b24u.javafx.gra.Kratka.Figura;
 import eu.b24u.javafx.gra.PamiecGry;
 import javafx.scene.paint.Color;
 
@@ -23,14 +24,36 @@ public class MojaAplikacja extends Aplikacja {
 
 		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
 
-		// pamiecGry.dodajKliknietaKratke(x, y);
+		Figura figura = null;
 
-		if (czyKolko) {
-			rysujKolkoWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
-			czyKolko = false;
-		} else {
-			rysujKrzyzykWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
-			czyKolko = true;
+		if (pamiecGry.czyKratkaJestPusta(kliknietyProstokat.x, kliknietyProstokat.y)) {
+			if (czyKolko) {
+				figura = Figura.KOLKO;
+
+			} else {
+				figura = Figura.KRZYZYK;
+			}
+
+			pamiecGry.dodajKliknietaKratke(kliknietyProstokat.x, kliknietyProstokat.y, figura);
+
+			if (czyKolko) {
+				rysujKolkoWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
+				czyKolko = false;
+			} else {
+				rysujKrzyzykWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
+				czyKolko = true;
+			}
+			if (pamiecGry.czyWygrana()) { 
+				Punkt p1 = new Punkt(kliknietyProstokat.x, kliknietyProstokat.y);
+				Punkt p2 = new Punkt(kliknietyProstokat.height, kliknietyProstokat.width);
+				;
+				
+				plotno.wypiszTekst(kliknietyProstokat.x, kliknietyProstokat.y, "Wygrana", Color.RED);
+
+				// kliknietyProstokat.
+				plotno.rysujProstokat(p1, p2, Color.RED);
+			}
+
 		}
 
 	}
@@ -62,11 +85,16 @@ public class MojaAplikacja extends Aplikacja {
 		rysujKwadratKolkoIKrzyzyk(plotno, 0, 0, listaProstokatow);
 		rysujKwadratKolkoIKrzyzyk(plotno, 1, 0, listaProstokatow);
 		rysujKwadratKolkoIKrzyzyk(plotno, 2, 0, listaProstokatow);
-
-
+		rysujKwadratKolkoIKrzyzyk(plotno, 2, 1, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 0, 1, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 1, 1, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 0, 2, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 2, 2, listaProstokatow);
+		rysujKwadratKolkoIKrzyzyk(plotno, 1, 2, listaProstokatow);
 	}
 
 	/**
+	 * metoda rysuje szary kwadrat w ktorym mozna wpisac kolko lub krzyzyk
 	 * 
 	 * @param plotno
 	 * @param x

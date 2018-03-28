@@ -1,5 +1,7 @@
 package eu.b24u.javafx.gra;
 
+import java.util.Iterator;
+
 import eu.b24u.javafx.Program;
 import eu.b24u.javafx.element.Lista;
 import eu.b24u.javafx.element.Punkt;
@@ -36,9 +38,15 @@ public class PamiecGry implements InterfejsPamiecGry {
 	}
 
 	@Override
-	public boolean czyKratkaJestPusta() {
+	public boolean czyKratkaJestPusta(int x, int y) {
 		// TODO czyKratkaJestPusta
-		return false;
+		for (Iterator iterator = listaKratek.iterator(); iterator.hasNext();) {
+			Kratka kratka = (Kratka) iterator.next();
+			if (kratka.x == x && kratka.y == y) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -47,20 +55,19 @@ public class PamiecGry implements InterfejsPamiecGry {
 			return false;
 		} else {
 			for (Kratka kratkaZListy : listaKratek) {
-			Program.wypisz(kratkaZListy);
+				Program.wypisz(kratkaZListy);
 				// po ukosie
 
 				// w pionie
 
 				// w poziomie
-		}
-
+			}
+			return true;
 		}
 		// TODO czyWygrana
 
-		return false;
-	}
 
+	}
 
 	@Override
 	public Punkt kliknietaKratka(double x, double y) {
@@ -70,7 +77,6 @@ public class PamiecGry implements InterfejsPamiecGry {
 
 	@Override
 	public void dodajKliknietaKratke(int x, int y, Figura figura) {
-		// TODO Auto-generated method stub
 		listaKratek.add(new Kratka(x, y, figura));
 	}
 
