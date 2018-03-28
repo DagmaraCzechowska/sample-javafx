@@ -44,14 +44,13 @@ public class MojaAplikacja extends Aplikacja {
 				czyKolko = true;
 			}
 			if (pamiecGry.czyWygrana()) { 
-				Punkt p1 = new Punkt(kliknietyProstokat.x, kliknietyProstokat.y);
-				Punkt p2 = new Punkt(kliknietyProstokat.height, kliknietyProstokat.width);
-				;
-				
-				plotno.wypiszTekst(kliknietyProstokat.x, kliknietyProstokat.y, "Wygrana", Color.RED);
-
+				Punkt p1 = new Punkt(0, 250);
+				Punkt p2 = new Punkt(600, 100);
 				// kliknietyProstokat.
-				plotno.rysujProstokat(p1, p2, Color.RED);
+				plotno.rysujPelnyProstokat(p1, p2, Color.RED);
+
+				plotno.wypiszTekst(170, 315, "Wygrana", Color.WHITE);
+
 			}
 
 		}

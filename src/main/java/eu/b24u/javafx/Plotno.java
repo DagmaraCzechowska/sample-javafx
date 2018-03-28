@@ -57,6 +57,24 @@ public class Plotno extends Canvas {
 	}
 
 	/**
+	 * Metoda służy do rysowania prostokąta wypelnionego kolorem w srodku pomiędzy 2
+	 * punktami.
+	 * 
+	 * @param p1
+	 *            to punkt 1
+	 * @param p2
+	 *            punkt 2
+	 * @param kolor
+	 *            to kolor prostokąta.
+	 */
+	public void rysujPelnyProstokat(Punkt p1, Punkt p2, Color kolor) {
+		context.setFill(kolor);
+		context.setStroke(kolor);
+		context.setLineWidth(5);
+		context.fillRect(p1.x, p1.y, p2.x, p2.y);
+	}
+
+	/**
 	 * jest to metoda ktora wypisuje tekst na plotnie
 	 * 
 	 * @param x
@@ -68,9 +86,11 @@ public class Plotno extends Canvas {
 	 * @param kolor
 	 */
 	public void wypiszTekst(double x, double y, String tekst, Paint kolor) {
-		context.setFont(new Font("Arial", 12));
-		context.fillText(tekst, x, y);
 		context.setStroke(kolor);
+		context.setFill(kolor);
+
+		context.setFont(new Font("Arial", 62));
+		context.fillText(tekst, x, y);
 	}
 
 	public void ustawRozmiar(double wysokosc, double szerokosc) {
