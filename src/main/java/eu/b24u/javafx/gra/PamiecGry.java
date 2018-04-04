@@ -39,14 +39,7 @@ public class PamiecGry implements InterfejsPamiecGry {
 
 	@Override
 	public boolean czyKratkaJestPusta(int x, int y) {
-		// TODO czyKratkaJestPusta
-		for (Iterator iterator = listaKratek.iterator(); iterator.hasNext();) {
-			Kratka kratka = (Kratka) iterator.next();
-			if (kratka.x == x && kratka.y == y) {
-				return false;
-			}
-		}
-		return true;
+		return pobierzKratke(x, y) == null;
 	}
 
 	@Override
@@ -132,6 +125,32 @@ public class PamiecGry implements InterfejsPamiecGry {
 	public void dodajKliknietaKratke(int x, int y, Figura figura) {
 		int wspolrzednaPionowa = -1;
 		int wspolrzednaPozioma = -1;
+		if (x < 200) {
+			wspolrzednaPozioma = 0;
+		}
+		if (x > 200 && x < 400) {
+			wspolrzednaPozioma = 1;
+		}
+		if (x > 400) {
+			wspolrzednaPozioma = 2;
+		}
+
+		if (y < 200) {
+			wspolrzednaPionowa = 0;
+		}
+		if (y > 200 && y < 400) {
+			wspolrzednaPionowa = 1;
+		}
+		if (y > 400) {
+			wspolrzednaPionowa = 2;
+		}
+		listaKratek.add(new Kratka(wspolrzednaPozioma, wspolrzednaPionowa, figura));
+	}
+
+	@Override
+	public Kratka pobierzKratke(int x, int y) {
+		int wspolrzednaPionowa = -1;
+		int wspolrzednaPozioma = -1;
 		if (x<200) {
 			wspolrzednaPozioma=0;
 		}
@@ -151,14 +170,13 @@ public class PamiecGry implements InterfejsPamiecGry {
 			if (y>400) {
 				wspolrzednaPionowa=2;
 		}
-
-		listaKratek.add(new Kratka(wspolrzednaPozioma, wspolrzednaPionowa, figura));
+		for (Iterator iterator = listaKratek.iterator(); iterator.hasNext();) {
+			Kratka kratka = (Kratka) iterator.next();
+			if (kratka.x == wspolrzednaPozioma && kratka.y == wspolrzednaPionowa) {
+				return kratka;
+			}
 	}
-
-	@Override
-	public Kratka pobierzKratke(int x, int y) {
-		// TODO pobierzKratke
-		return new Kratka(0, 0, Figura.KOLKO);
+		return null;
 	}
 
 }
