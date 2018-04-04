@@ -49,4 +49,39 @@ public class PamiecGryTest {
 		Sprawdz.czyPrawda(gra.czyWygrana());
 	}
 
+	/**
+	 * Kolumna 1 wygraly krzyzyki
+	 */
+	@Test
+	public void test4() {
+		Program.wypisz("test4");
+		PamiecGry gra = new PamiecGry();
+		// gra.dodajKliknietaKratke(2, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(2, 0, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 0, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(0, 2, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 1, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 2, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 2, Figura.KRZYZYK);
+		Sprawdz.czyPrawda(gra.czyWygrana());
+	}
+
+	/**
+	 * ?
+	 */
+	@Test
+	public void test5() {
+		Program.wypisz("test5");
+		PamiecGry gra = new PamiecGry();
+		// gra.dodajKliknietaKratke(2, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 2, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(0, 1, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(1, 0, Figura.KOLKO);
+		gra.dodajKliknietaKratke(0, 0, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 2, Figura.KOLKO);
+		Sprawdz.czyFalsz(gra.czyWygrana());
+	}
+
 }

@@ -57,16 +57,57 @@ public class PamiecGry implements InterfejsPamiecGry {
 			for (Kratka kratkaZListy : listaKratek) {
 				Program.wypisz(kratkaZListy);
 				// po ukosie
+				Lista kratkiWiersz0 = pobierzKratkiPoUkosieRosnaco();
 
 				// w pionie
+				Lista kratkiWiersz1 = pobierzKratkiWKolumnie(0);
 
 				// w poziomie
+				Lista kratkiWiersz2 = pobierzKratkiWWierszu(0);
+
 			}
-			return true;
+			return false;
 		}
 		// TODO czyWygrana
 
 
+	}
+
+	private Lista pobierzKratkiWWierszu(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Metoda pobiera kratki w kolumnie
+	 * 
+	 * @param numerKolumny
+	 * @return lista kratek w kolumnie
+	 */
+	private Lista pobierzKratkiWKolumnie(int numerKolumny) {
+		Lista listaZwracana = new Lista();
+		for (Kratka kratkaZListy : listaKratek) {
+			if (kratkaZListy.x == numerKolumny) {
+				listaZwracana.dodaj(kratkaZListy);
+			}
+		}
+		return listaZwracana;
+	}
+
+	/**
+	 * Metoda pobiera liste kratek po ukosie rosnaco
+	 * 
+	 * @return zwraca liste kratek
+	 */
+	private Lista pobierzKratkiPoUkosieRosnaco() {
+		Lista listaZwracana = new Lista();
+		int licznik = 0;
+		for (Kratka kratkaZListy : listaKratek) {
+			if (kratkaZListy.x == kratkaZListy.y) {
+				listaZwracana.dodaj(kratkaZListy);
+			}
+		}
+		return listaZwracana;
 	}
 
 	@Override
