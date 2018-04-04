@@ -47,9 +47,9 @@ public class MojaAplikacja extends Aplikacja {
 				Punkt p1 = new Punkt(0, 250);
 				Punkt p2 = new Punkt(600, 100);
 				// kliknietyProstokat.
-				// plotno.rysujPelnyProstokat(p1, p2, Color.RED);
+				plotno.rysujPelnyProstokat(p1, p2, Color.RED);
 
-				// plotno.wypiszTekst(170, 315, "Wygrana", Color.WHITE);
+				plotno.wypiszTekst(170, 315, "Wygrana", Color.WHITE);
 
 			}
 

@@ -51,25 +51,37 @@ public class PamiecGry implements InterfejsPamiecGry {
 
 	@Override
 	public boolean czyWygrana() {
+		Program.wypisz("Lista kratek: " + listaKratek.size());
 		if (listaKratek.size() < 5) {
 			return false;
 		} else {
 			for (Kratka kratkaZListy : listaKratek) {
 				Program.wypisz(kratkaZListy);
 				// po ukosie
-				Lista kratkiWiersz0 = pobierzKratkiPoUkosieRosnaco();
+				Lista<Kratka> kratkiWiersz0 = pobierzKratkiPoUkosieRosnaco();
 
 				// w pionie
-				Lista kratkiWiersz1 = pobierzKratkiWKolumnie(0);
+				Lista<Kratka> kratkiKolumna0 = pobierzKratkiWKolumnie(0);
+				Program.wypisz("kratkiKolumna0:" + kratkiKolumna0.size());
 
+				if (kratkiKolumna0.size() == 3) {
+					Kratka kratka0 = kratkiKolumna0.get(0);
+					Kratka kratka1 = kratkiKolumna0.get(1);
+					Kratka kratka2 = kratkiKolumna0.get(2);
+					if (kratka0.figura == kratka1.figura && kratka0.figura == kratka2.figura) {
+						Program.wypisz("wygrana w pierwszej kolumnie");
+
+						return true;
+					}
+
+				}
 				// w poziomie
-				Lista kratkiWiersz2 = pobierzKratkiWWierszu(0);
+				Lista<Kratka> listaKratekWiersz0 = pobierzKratkiWWierszu(0);
 
 			}
 			return false;
 		}
 		// TODO czyWygrana
-
 
 	}
 
@@ -118,7 +130,29 @@ public class PamiecGry implements InterfejsPamiecGry {
 
 	@Override
 	public void dodajKliknietaKratke(int x, int y, Figura figura) {
-		listaKratek.add(new Kratka(x, y, figura));
+		int wspolrzednaPionowa = -1;
+		int wspolrzednaPozioma = -1;
+		if (x<200) {
+			wspolrzednaPozioma=0;
+		}
+		if (x>200 && x<400) {
+			wspolrzednaPozioma=1;
+		}
+		if (x>400) {
+			wspolrzednaPozioma=2;
+		}
+			
+			if (y<200) {
+				wspolrzednaPionowa=0;
+			}
+			if (y>200 && y<400) {
+				wspolrzednaPionowa=1;
+			}
+			if (y>400) {
+				wspolrzednaPionowa=2;
+		}
+
+		listaKratek.add(new Kratka(wspolrzednaPozioma, wspolrzednaPionowa, figura));
 	}
 
 	@Override
