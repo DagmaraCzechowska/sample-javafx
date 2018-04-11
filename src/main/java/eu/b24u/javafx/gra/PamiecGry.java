@@ -78,9 +78,14 @@ public class PamiecGry implements InterfejsPamiecGry {
 
 	}
 
-	private Lista pobierzKratkiWWierszu(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	private Lista pobierzKratkiWWierszu(int numerWiersza) {
+		Lista listaZwracana = new Lista();
+		for (Kratka kratkaZListy : listaKratek) {
+			if (kratkaZListy.y == numerWiersza) {
+				listaZwracana.dodaj(kratkaZListy);
+			}
+		}
+		return listaZwracana;
 	}
 
 	/**

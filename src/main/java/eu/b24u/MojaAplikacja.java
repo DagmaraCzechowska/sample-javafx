@@ -23,7 +23,9 @@ public class MojaAplikacja extends Aplikacja {
 		Program.wypisz("x=" + x + " y=" + y);
 
 		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
-
+		if (kliknietyProstokat == null) {
+			return;
+		}
 		Figura figura = null;
 
 		if (pamiecGry.czyKratkaJestPusta(kliknietyProstokat.x, kliknietyProstokat.y)) {
@@ -71,8 +73,8 @@ public class MojaAplikacja extends Aplikacja {
 	@Override
 	public void budujScene(Scena scena, Plotno plotno) {
 		scena.ustawTytul("Kółko i krzyżyk");
-		scena.ustawRozmiar(660, 635);
-		plotno.ustawRozmiar(660, 635);
+		scena.ustawRozmiar(640, 620);
+		plotno.ustawRozmiar(640, 620);
 
 		plansza = new Plansza(plotno);
 		czyKolko = true;
