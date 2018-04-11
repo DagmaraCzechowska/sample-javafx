@@ -20,8 +20,7 @@ public class MojaAplikacja extends Aplikacja {
 
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
-		Program.wypisz("x=" + x + " y=" + y);
-
+		// Program.wypisz("x=" + x + " y=" + y);
 		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
 		if (kliknietyProstokat == null) {
 			return;
@@ -45,7 +44,7 @@ public class MojaAplikacja extends Aplikacja {
 				rysujKrzyzykWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
 				czyKolko = true;
 			}
-			if (pamiecGry.czyWygrana()) { 
+			if (pamiecGry.czyWygrana()) {
 				Punkt p1 = new Punkt(0, 250);
 				Punkt p2 = new Punkt(600, 100);
 				// kliknietyProstokat.
@@ -56,7 +55,16 @@ public class MojaAplikacja extends Aplikacja {
 			}
 
 		}
+		if (figura != null) {
+			// Tworzenie testow
+			Program.wypisz("gra.dodajKliknietaKratke(" + policzWspolrzedna(kliknietyProstokat.x) + ", "
+					+ policzWspolrzedna(kliknietyProstokat.y) + ", Figura." + figura.name().toUpperCase() + ");");
+		}
+	}
 
+	private int policzWspolrzedna(int wspolrzedna) {
+		int tymczasowo = wspolrzedna - 10;
+		return tymczasowo / 200;
 	}
 
 	private Prostokat zwrocProstokatKlikniety(double x, double y) {
@@ -68,7 +76,6 @@ public class MojaAplikacja extends Aplikacja {
 		}
 		return null;
 	}
-
 
 	@Override
 	public void budujScene(Scena scena, Plotno plotno) {

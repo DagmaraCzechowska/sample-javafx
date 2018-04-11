@@ -1,6 +1,6 @@
 package eu.b24u.javafx.gra;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import eu.b24u.javafx.Program;
@@ -23,10 +23,9 @@ public class PamiecGryTest {
 
 	private PamiecGry gra;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		gra = new PamiecGry();
-
 	}
 
 	/**
@@ -109,7 +108,11 @@ public class PamiecGryTest {
 	@Test
 	public void test6() {
 		Program.wypisz("test6");
-		// gra.dodajKliknietaKratke(1, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(0, 2, Figura.KOLKO);
+		gra.dodajKliknietaKratke(2, 2, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(1, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(0, 1, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 0, Figura.KOLKO);
 		Sprawdz.czyPrawda(gra.czyWygrana());
 	}
 
@@ -119,7 +122,12 @@ public class PamiecGryTest {
 	@Test
 	public void test7() {
 		Program.wypisz("test7");
-		// gra.dodajKliknietaKratke(1, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(0, 0, Figura.KOLKO);
+		gra.dodajKliknietaKratke(0, 1, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 0, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 1, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(0, 2, Figura.KOLKO);
+		gra.dodajKliknietaKratke(2, 1, Figura.KRZYZYK);
 		Sprawdz.czyPrawda(gra.czyWygrana());
 	}
 
@@ -129,7 +137,11 @@ public class PamiecGryTest {
 	@Test
 	public void test8() {
 		Program.wypisz("test8");
-		// gra.dodajKliknietaKratke(1, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(2, 0, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 0, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 1, Figura.KOLKO);
+		gra.dodajKliknietaKratke(1, 1, Figura.KRZYZYK);
+		gra.dodajKliknietaKratke(2, 2, Figura.KOLKO);
 		Sprawdz.czyPrawda(gra.czyWygrana());
 	}
 
