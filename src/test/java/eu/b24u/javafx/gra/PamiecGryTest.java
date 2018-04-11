@@ -6,6 +6,19 @@ import org.junit.jupiter.api.Test;
 import eu.b24u.javafx.Program;
 import eu.b24u.javafx.gra.Kratka.Figura;
 
+/**
+ * Wyglad planszy do gry <br>
+ * -----------------<br>
+ * 0,0 | 1,0 | 2,0 <br>
+ * -----------------<br>
+ * 0,1 | 1,1 | 2,1 <br>
+ * -----------------<br>
+ * 0,2 | 1,2 | 2,2 <br>
+ * -----------------<br>
+ * 
+ * @author student
+ *
+ */
 public class PamiecGryTest {
 
 	private PamiecGry gra;
