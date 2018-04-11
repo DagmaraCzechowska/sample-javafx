@@ -51,8 +51,18 @@ public class PamiecGry implements InterfejsPamiecGry {
 			for (Kratka kratkaZListy : listaKratek) {
 				// Program.wypisz(kratkaZListy);
 				// po ukosie
-				Lista<Kratka> kratkiWiersz0 = pobierzKratkiPoUkosieRosnaco();
-
+				Lista<Kratka> kratkiPoUkosieMalejaco0 = pobierzKratkiPoUkosieMalejaco();
+				if (kratkiPoUkosieMalejaco0.size() == 3) {
+					Kratka kratkaPoUkosieMalejaco0 = kratkiPoUkosieMalejaco0.get(0);
+					Kratka kratkaPoUkosieMalejaco1 = kratkiPoUkosieMalejaco0.get(1);
+					Kratka kratkaPoUkosieMalejaco2 = kratkiPoUkosieMalejaco0.get(2);
+					if (kratkaPoUkosieMalejaco0.figura == kratkaPoUkosieMalejaco1.figura
+							&& kratkaPoUkosieMalejaco0.figura == kratkaPoUkosieMalejaco2.figura) {
+						Program.wypisz("wygrana po ukosie");
+						return true;
+					}
+				}
+				Lista<Kratka> kratkiPoUkosieRosnoco0 = pobierzKratkiPoUkosieRosnoco();
 
 				// w pionie
 				// Program.wypisz("kratkiKolumna0:" + kratkiKolumna0.size());
@@ -74,13 +84,15 @@ public class PamiecGry implements InterfejsPamiecGry {
 				// w poziomie
 				for (int i = 0; i < 3; i++) {
 					Lista<Kratka> listaKratekWWierszu_i = pobierzKratkiWWierszu(i);
+					if (listaKratekWWierszu_i.size() == 3) {
 
-					Kratka kratka0 = listaKratekWWierszu_i.get(0);
-					Kratka kratka1 = listaKratekWWierszu_i.get(1);
-					Kratka kratka2 = listaKratekWWierszu_i.get(2);
-					if (kratka0.figura == kratka1.figura && kratka0.figura == kratka2.figura) {
-						Program.wypisz("wygrana w " + i + " wierszu");
-						return true;
+						Kratka kratka0 = listaKratekWWierszu_i.get(0);
+						Kratka kratka1 = listaKratekWWierszu_i.get(1);
+						Kratka kratka2 = listaKratekWWierszu_i.get(2);
+						if (kratka0.figura == kratka1.figura && kratka0.figura == kratka2.figura) {
+							Program.wypisz("wygrana w " + i + " wierszu");
+							return true;
+						}
 					}
 				}
 				//
@@ -89,6 +101,11 @@ public class PamiecGry implements InterfejsPamiecGry {
 		}
 		// TODO czyWygrana
 
+	}
+
+	private Lista<Kratka> pobierzKratkiPoUkosieRosnoco() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private Lista pobierzKratkiWWierszu(int numerWiersza) {
@@ -122,7 +139,7 @@ public class PamiecGry implements InterfejsPamiecGry {
 	 * 
 	 * @return zwraca liste kratek
 	 */
-	private Lista pobierzKratkiPoUkosieRosnaco() {
+	private Lista pobierzKratkiPoUkosieMalejaco() {
 		Lista listaZwracana = new Lista();
 		int licznik = 0;
 		for (Kratka kratkaZListy : listaKratek) {
