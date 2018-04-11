@@ -91,7 +91,7 @@ public class PamiecGryTest {
 	}
 
 	/**
-	 * TODO wygrana po ukosie
+	 * TODO wygrana po ukosie AK MB
 	 */
 	@Test
 	public void test6() {
@@ -101,7 +101,7 @@ public class PamiecGryTest {
 	}
 
 	/**
-	 * TODO wygrana poziomo
+	 * TODO wygrana poziomo DD EB
 	 */
 	@Test
 	public void test7() {
@@ -111,7 +111,7 @@ public class PamiecGryTest {
 	}
 
 	/**
-	 * TODO wygrana pionowo
+	 * TODO wygrana pionowo DR MK
 	 */
 	@Test
 	public void test8() {
