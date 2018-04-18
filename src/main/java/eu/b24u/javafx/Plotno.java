@@ -17,7 +17,7 @@ public class Plotno extends Canvas {
 	}
 
 	public void czysc() {
-		context.clearRect(0, 0, 500, 500);
+		context.clearRect(0, 0, 640, 640);
 	}
 
 	public void rysujOkrag(int startx, int starty, int promien) {
@@ -85,11 +85,11 @@ public class Plotno extends Canvas {
 	 *            to napis wypisany na plotnie
 	 * @param kolor
 	 */
-	public void wypiszTekst(double x, double y, String tekst, Paint kolor) {
+	public void wypiszTekst(double x, double y, int rozmiar, String tekst, Paint kolor) {
 		context.setStroke(kolor);
 		context.setFill(kolor);
 
-		context.setFont(new Font("Arial", 62));
+		context.setFont(new Font("Arial", rozmiar));
 		context.fillText(tekst, x, y);
 	}
 

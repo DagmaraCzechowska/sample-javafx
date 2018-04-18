@@ -55,7 +55,7 @@ public class MojaAplikacja extends Aplikacja {
 				// kliknietyProstokat.
 				plotno.rysujPelnyProstokat(p1, p2, Color.RED);
 
-				plotno.wypiszTekst(170, 315, "Wygrana", Color.WHITE);
+				plotno.wypiszTekst(170, 315, 60, "Wygrana", Color.WHITE);
 			}
 
 			if (pamiecGry.czyKoniecGry()) {
@@ -94,6 +94,7 @@ public class MojaAplikacja extends Aplikacja {
 		scena.ustawTytul("Kółko i krzyżyk");
 		scena.ustawRozmiar(640, 620);
 		plotno.ustawRozmiar(640, 640);
+		pamiecGry = new PamiecGry();
 		utworzNowaPlansze(plotno);
 	}
 
@@ -107,8 +108,10 @@ public class MojaAplikacja extends Aplikacja {
 		plansza = new Plansza(plotno);
 		czyKolko = true;
 		koniecGry = false;
-		pamiecGry = new PamiecGry();
 		listaProstokatow = new Lista<Prostokat>();
+		pamiecGry.wyczyscKratki();
+		plotno.wypiszTekst(15, 30, 12, "Wygrane:" + pamiecGry.pobierzWygrane(), Color.GREEN);
+		plotno.wypiszTekst(15, 50, 12, "Przegrane:" + pamiecGry.pobierzPrzegrane(), Color.RED);
 
 		rysujKwadratKolkoIKrzyzyk(plotno, 0, 0, listaProstokatow);
 		rysujKwadratKolkoIKrzyzyk(plotno, 1, 0, listaProstokatow);

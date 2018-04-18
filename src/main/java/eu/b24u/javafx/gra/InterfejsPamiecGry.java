@@ -1,6 +1,5 @@
 package eu.b24u.javafx.gra;
 
-import eu.b24u.javafx.element.Punkt;
 import eu.b24u.javafx.gra.Kratka.Figura;
 
 public interface InterfejsPamiecGry {
@@ -45,8 +44,6 @@ public interface InterfejsPamiecGry {
 	 *            wspolrzedna pionowa
 	 * @return Punkt klikniety na kratce do gry
 	 */
-	public Punkt kliknietaKratka(double x, double y);
-
 	public Kratka pobierzKratke(int x, int y);
 
 }

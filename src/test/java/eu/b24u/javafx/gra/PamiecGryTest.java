@@ -102,9 +102,7 @@ public class PamiecGryTest {
 		Sprawdz.czyFalsz(gra.czyWygrana());
 	}
 
-	/**
-	 * TODO wygrana po ukosie AK MB
-	 */
+
 	@Test
 	public void test6() {
 		Program.wypisz("test6");
@@ -116,9 +114,7 @@ public class PamiecGryTest {
 		Sprawdz.czyPrawda(gra.czyWygrana());
 	}
 
-	/**
-	 * TODO wygrana poziomo DD EB
-	 */
+
 	@Test
 	public void test7() {
 		Program.wypisz("test7");
@@ -131,9 +127,7 @@ public class PamiecGryTest {
 		Sprawdz.czyPrawda(gra.czyWygrana());
 	}
 
-	/**
-	 * TODO wygrana pionowo DR MK
-	 */
+
 	@Test
 	public void test8() {
 		Program.wypisz("test8");

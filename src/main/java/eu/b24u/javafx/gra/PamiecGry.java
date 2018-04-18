@@ -4,15 +4,13 @@ import java.util.Iterator;
 
 import eu.b24u.javafx.Program;
 import eu.b24u.javafx.element.Lista;
-import eu.b24u.javafx.element.Punkt;
 import eu.b24u.javafx.gra.Kratka.Figura;
 
 public class PamiecGry implements InterfejsPamiecGry {
 
 	Lista<Kratka> listaKratek;
-	// TODO PamiecGry 2 Lista kratek
-	// TODO PamiecGry 3 Sprawdzenie czy kratka jest pusta
-	// TODO PamiecGry 4 sprawdzenie czy ktos wygral
+	int iloscWygranych;
+	int iloscPrzegranych;
 
 	public Lista getListaKratek() {
 		return listaKratek;
@@ -28,6 +26,26 @@ public class PamiecGry implements InterfejsPamiecGry {
 	 */
 	public PamiecGry() {
 		utworzListeKratek();
+		zainicjujZmienne();
+	}
+
+	/**
+	 * TODO metoda zwieksza ilosc wygranych
+	 */
+	public void dodajWygrana() {
+
+	}
+
+	/**
+	 * TODO metoda zwieksza ilosc przegranych
+	 */
+	public void dodajPrzegrana() {
+
+	}
+
+	private void zainicjujZmienne() {
+		iloscWygranych = 0;
+		iloscPrzegranych = 0;
 	}
 
 	@Override
@@ -40,6 +58,17 @@ public class PamiecGry implements InterfejsPamiecGry {
 	@Override
 	public boolean czyKratkaJestPusta(int x, int y) {
 		return pobierzKratke(x, y) == null;
+	}
+
+	/**
+	 * TODO czy koniec gry <br>
+	 * Metoda sprawdza czy jest juz koniec gry <br>
+	 * ktos juz wygral lub nie ma juz wolnych kratek
+	 * 
+	 * @return
+	 */
+	public boolean czyKoniecGry() {
+		return czyWygrana();
 	}
 
 	@Override
@@ -99,12 +128,11 @@ public class PamiecGry implements InterfejsPamiecGry {
 			}
 			return false;
 		}
-		// TODO czyWygrana
 
 	}
 
 	private Lista<Kratka> pobierzKratkiPoUkosieRosnoco() {
-		// TODO Auto-generated method stub
+		// TODO Pobierz kratki po ukosie rosnoco
 		return null;
 	}
 
@@ -148,12 +176,6 @@ public class PamiecGry implements InterfejsPamiecGry {
 			}
 		}
 		return listaZwracana;
-	}
-
-	@Override
-	public Punkt kliknietaKratka(double x, double y) {
-		// TODO kliknietaKratka
-		return null;
 	}
 
 	@Override
@@ -212,6 +234,30 @@ public class PamiecGry implements InterfejsPamiecGry {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * TODO metoda czysci kratki w pamieci gry
+	 */
+	public void wyczyscKratki() {
+	}
+
+	/**
+	 * TODO metoda pobiera ilosc przegranych
+	 * 
+	 * @return
+	 */
+	public String pobierzPrzegrane() {
+		return "0";
+	}
+
+	/**
+	 * TODO metoda pobiera ilosc wygranych
+	 * 
+	 * @return
+	 */
+	public String pobierzWygrane() {
+		return "0";
 	}
 
 }
