@@ -17,10 +17,15 @@ public class MojaAplikacja extends Aplikacja {
 	boolean czyKolko;
 	private Lista<Prostokat> listaProstokatow;
 	private PamiecGry pamiecGry;
+	boolean koniecGry;
 
 	@Override
 	public void zdarzenieKlikniecaMyszka(double x, double y, Plotno plotno) {
 		// Program.wypisz("x=" + x + " y=" + y);
+		if (koniecGry) {
+			utworzNowaPlansze(plotno);
+			return;
+		}
 		Prostokat kliknietyProstokat = zwrocProstokatKlikniety(x, y);
 		if (kliknietyProstokat == null) {
 			return;
@@ -51,7 +56,10 @@ public class MojaAplikacja extends Aplikacja {
 				plotno.rysujPelnyProstokat(p1, p2, Color.RED);
 
 				plotno.wypiszTekst(170, 315, "Wygrana", Color.WHITE);
+			}
 
+			if (pamiecGry.czyKoniecGry()) {
+				koniecGry = true;
 			}
 
 		}
@@ -77,17 +85,29 @@ public class MojaAplikacja extends Aplikacja {
 		return null;
 	}
 
+	/**
+	 * Budowanie okna aplikacji po uruchomieniu<br>
+	 * metoda wykonuje sie tylko raz!
+	 */
 	@Override
 	public void budujScene(Scena scena, Plotno plotno) {
 		scena.ustawTytul("Kółko i krzyżyk");
 		scena.ustawRozmiar(640, 620);
-		plotno.ustawRozmiar(640, 620);
+		plotno.ustawRozmiar(640, 640);
+		utworzNowaPlansze(plotno);
+	}
 
+	/**
+	 * Tworzenie nowej planszy od poczatku
+	 * 
+	 * @param plotno
+	 */
+	private void utworzNowaPlansze(Plotno plotno) {
+		plotno.czysc();
 		plansza = new Plansza(plotno);
 		czyKolko = true;
-
+		koniecGry = false;
 		pamiecGry = new PamiecGry();
-
 		listaProstokatow = new Lista<Prostokat>();
 
 		rysujKwadratKolkoIKrzyzyk(plotno, 0, 0, listaProstokatow);
