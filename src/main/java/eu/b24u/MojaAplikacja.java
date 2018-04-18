@@ -60,6 +60,7 @@ public class MojaAplikacja extends Aplikacja {
 
 			if (pamiecGry.czyKoniecGry()) {
 				koniecGry = true;
+				// TODO zwiekszanie przegranej lub wygranej jak rozroznic ?
 			}
 
 		}
