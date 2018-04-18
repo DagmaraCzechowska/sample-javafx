@@ -30,10 +30,9 @@ public class PamiecGry implements InterfejsPamiecGry {
 	}
 
 	/**
-	 * TODO metoda zwieksza ilosc wygranych
 	 */
 	public void dodajWygrana() {
-
+		iloscWygranych = iloscWygranych + 1;
 	}
 
 	/**
@@ -50,8 +49,6 @@ public class PamiecGry implements InterfejsPamiecGry {
 
 	@Override
 	public void utworzListeKratek() {
-		// TODO utworzListeKratek
-
 		listaKratek = new Lista<Kratka>();
 	}
 
@@ -61,14 +58,18 @@ public class PamiecGry implements InterfejsPamiecGry {
 	}
 
 	/**
-	 * TODO czy koniec gry <br>
 	 * Metoda sprawdza czy jest juz koniec gry <br>
 	 * ktos juz wygral lub nie ma juz wolnych kratek
 	 * 
 	 * @return
 	 */
 	public boolean czyKoniecGry() {
-		return czyWygrana();
+		return czyWygrana() || brakWolnychKratek();
+	}
+
+	private boolean brakWolnychKratek() {
+
+		return listaKratek.size() == 9;
 	}
 
 	@Override
@@ -239,16 +240,19 @@ public class PamiecGry implements InterfejsPamiecGry {
 	/**
 	 * TODO metoda czysci kratki w pamieci gry
 	 */
+
 	public void wyczyscKratki() {
+		listaKratek.clear();
 	}
 
 	/**
-	 * TODO metoda pobiera ilosc przegranych
+	 * metoda pobiera ilosc przegranych
 	 * 
 	 * @return
 	 */
 	public String pobierzPrzegrane() {
-		return "0";
+		// metoda valueOf zmienia liczbe na napis
+		return String.valueOf(iloscPrzegranych);
 	}
 
 	/**
