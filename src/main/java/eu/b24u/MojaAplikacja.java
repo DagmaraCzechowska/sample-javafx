@@ -70,7 +70,7 @@ public class MojaAplikacja extends Aplikacja {
 		// TODO Jakie kroki ma wykonac BOT ?
 
 		boolean czyPusta = false;
-		// . wykrzyknik oznacza zaprzeczenie
+		// wykrzyknik oznacza zaprzeczenie
 		while (!czyPusta) {
 			// 1. losowanie kratki
 			int losX = Program.losujLiczbe(0, 2);
@@ -82,6 +82,7 @@ public class MojaAplikacja extends Aplikacja {
 				Prostokat wylosowanyProstokat = zmienKratkeNaProstokat(wylosowanaKratka);
 				rysujFigureWKratce(plotno, wylosowanyProstokat);
 
+				// TODO dodawanie kratki kliknietej przez BOTa do pamieci gry
 				// pamiecGry.dodajKliknietaKratke(wylosowanyProstokat.x, wylosowanyProstokat.y,
 				// figura);
 
