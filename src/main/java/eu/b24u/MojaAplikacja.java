@@ -7,6 +7,7 @@ import eu.b24u.javafx.Scena;
 import eu.b24u.javafx.element.Lista;
 import eu.b24u.javafx.element.Prostokat;
 import eu.b24u.javafx.element.Punkt;
+import eu.b24u.javafx.gra.Kratka;
 import eu.b24u.javafx.gra.Kratka.Figura;
 import eu.b24u.javafx.gra.PamiecGry;
 import javafx.scene.paint.Color;
@@ -32,7 +33,6 @@ public class MojaAplikacja extends Aplikacja {
 		}
 		Figura figura = null;
 
-
 		if (pamiecGry.czyKratkaJestPusta(kliknietyProstokat.x, kliknietyProstokat.y)) {
 			if (czyKolko) {
 				figura = Figura.KOLKO;
@@ -42,44 +42,69 @@ public class MojaAplikacja extends Aplikacja {
 			}
 
 			pamiecGry.dodajKliknietaKratke(kliknietyProstokat.x, kliknietyProstokat.y, figura);
+			rysujFigureWKratce(plotno, kliknietyProstokat);
 
-			if (czyKolko) {
-				rysujKolkoWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
-				czyKolko = false;
-			} else {
-				rysujKrzyzykWKwadracie(plotno, kliknietyProstokat.x, kliknietyProstokat.y);
-				czyKolko = true;
-			}
 			if (pamiecGry.czyWygrana()) {
 				Punkt p1 = new Punkt(0, 250);
 				Punkt p2 = new Punkt(600, 100);
-				// kliknietyProstokat.
 				plotno.rysujPelnyProstokat(p1, p2, Color.RED);
-
 				plotno.wypiszTekst(170, 315, 60, "Wygrana", Color.WHITE);
 			}
+
+			ruchWykonanyPrzezBota(plotno, figura);
 
 			if (pamiecGry.czyKoniecGry()) {
 				koniecGry = true;
 				// TODO zwiekszanie przegranej lub wygranej jak rozroznic ?
-			} else {
-				int losX = Program.losujLiczbe(0, 600);
-				int losY = Program.losujLiczbe(0, 600);
-				zdarzenieKlikniecaMyszka(losX, losY, plotno);
 			}
-
-			// TODO Kiedy ma wykonac ruch BOT
-			// TODO Jakie kroki ma wykonac BOT ?
-			// 1. losowanie kratki
-			// 2. dodanie kratki do pamieci gry
-			// 3. rysowanie figury
-			// TODO wylosuj kratke ktora ma wybrac BOT
-
 		}
 		if (figura != null) {
 			// Tworzenie testow
 			Program.wypisz("gra.dodajKliknietaKratke(" + policzWspolrzedna(kliknietyProstokat.x) + ", "
 					+ policzWspolrzedna(kliknietyProstokat.y) + ", Figura." + figura.name().toUpperCase() + ");");
+		}
+	}
+
+	public void ruchWykonanyPrzezBota(Plotno plotno, Figura figura) {
+		// TODO Kiedy ma wykonac ruch BOT
+		// TODO Jakie kroki ma wykonac BOT ?
+
+		boolean czyPusta = false;
+		// . wykrzyknik oznacza zaprzeczenie
+		while (!czyPusta) {
+			// 1. losowanie kratki
+			int losX = Program.losujLiczbe(0, 2);
+			int losY = Program.losujLiczbe(0, 2);
+			Kratka wylosowanaKratka = new Kratka(losX, losY);
+			// 1a po wylosowaniu kratki trzeba sprawic czy jest pusta, losujemy az
+			czyPusta = pamiecGry.czyKratkaJestPusta(wylosowanaKratka);
+			if (czyPusta) {
+				Prostokat wylosowanyProstokat = zmienKratkeNaProstokat(wylosowanaKratka);
+				rysujFigureWKratce(plotno, wylosowanyProstokat);
+
+				// pamiecGry.dodajKliknietaKratke(wylosowanyProstokat.x, wylosowanyProstokat.y,
+				// figura);
+
+				// przerywamy losowanie
+			} else {
+				// losuje jeszcze raz
+
+			}
+		}
+		// znajdziemy pusta
+		// 2. dodanie kratki do pamieci gry
+		// 3. rysowanie figury
+		// TODO wylosuj kratke ktora ma wybrac BOT
+	}
+
+	public void rysujFigureWKratce(Plotno plotno, Prostokat wylosowanyProstokat) {
+		// rysuje figure
+		if (czyKolko) {
+			rysujKolkoWKwadracie(plotno, (int) wylosowanyProstokat.x, (int) wylosowanyProstokat.y);
+			czyKolko = false;
+		} else {
+			rysujKrzyzykWKwadracie(plotno, (int) wylosowanyProstokat.x, (int) wylosowanyProstokat.y);
+			czyKolko = true;
 		}
 	}
 
@@ -146,12 +171,19 @@ public class MojaAplikacja extends Aplikacja {
 	 * @param listaKratek
 	 */
 	private void rysujKwadratKolkoIKrzyzyk(Plotno plotno, int x, int y, Lista listaKratek) {
-		Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
+		// Punkt punktPoczatkowy = new Punkt(x * 200 + 10, y * 200 + 10);
 		// plotno.rysujProstokat(punktPoczatkowy, new Punkt(180, 180), Color.LIGHTGRAY);
-		Punkt wysokoscISzerokosc = new Punkt(180, 180);
-		plotno.rysujProstokat(punktPoczatkowy, wysokoscISzerokosc, Color.LIGHTGRAY);
-		listaKratek.dodaj(new Prostokat(punktPoczatkowy, wysokoscISzerokosc));
+		// Punkt wysokoscISzerokosc = new Punkt(180, 180);
+		// plotno.rysujProstokat(punktPoczatkowy, wysokoscISzerokosc, Color.LIGHTGRAY);
+		Kratka kratka = new Kratka(x, y);
+		listaKratek.dodaj(zmienKratkeNaProstokat(kratka));
 		// return new Prostokat(punktPoczatkowy, wysokoscISzerokosc);
+	}
+
+	private Prostokat zmienKratkeNaProstokat(Kratka kratka) {
+		Punkt punktPoczatkowy = new Punkt(((int) kratka.x) * 200 + 10, ((int) kratka.y) * 200 + 10);
+		Punkt wysokoscISzerokosc = new Punkt(180, 180);
+		return new Prostokat(punktPoczatkowy, wysokoscISzerokosc);
 	}
 
 	/**

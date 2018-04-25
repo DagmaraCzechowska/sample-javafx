@@ -254,6 +254,16 @@ public class PamiecGry implements InterfejsPamiecGry {
 		// wspolrzednaPionowa = 2;
 		// }
 		Kratka kliknietaKratka = zmienWspolrzedneKliknietegoPunktuNaKratke(x, y);
+		return pobierzKratkeZListy(kliknietaKratka);
+	}
+
+	/**
+	 * pobiera kratke z listy
+	 * 
+	 * @param kliknietaKratka
+	 * @return zwraca kratke z listy, lub zwraca "null" jezeli kratki nie ma
+	 */
+	public Kratka pobierzKratkeZListy(Kratka kliknietaKratka) {
 		for (Iterator iterator = listaKratek.iterator(); iterator.hasNext();) {
 			Kratka kratka = (Kratka) iterator.next();
 			if (kratka.x == kliknietaKratka.x && kratka.y == kliknietaKratka.y) {
@@ -264,7 +274,7 @@ public class PamiecGry implements InterfejsPamiecGry {
 	}
 
 	/**
-	 * TODO metoda czysci kratki w pamieci gry
+	 * metoda czysci kratki w pamieci gry
 	 */
 
 	public void wyczyscKratki() {
@@ -288,6 +298,17 @@ public class PamiecGry implements InterfejsPamiecGry {
 	 */
 	public String pobierzWygrane() {
 		return "0";
+	}
+
+	/**
+	 * Metoda sprawdza, czy wylosowana kratka jest pusta to true, jeżeli nie jest to
+	 * false.
+	 * 
+	 * @param wylosowanaKratka
+	 * @return prawde jeżeli kratka jest pusta a fałsz jeśli nie
+	 */
+	public boolean czyKratkaJestPusta(Kratka wylosowanaKratka) {
+		return pobierzKratkeZListy(wylosowanaKratka) == null;
 	}
 
 }

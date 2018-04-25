@@ -1,8 +1,8 @@
 package eu.b24u.javafx.gra;
 
 public class Kratka {
-	double x;
-	double y;
+	public double x;
+	public double y;
 	Figura figura;
 
 	public enum Figura {
@@ -54,6 +54,22 @@ public class Kratka {
 		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
 			return false;
 		return true;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
 	};
 
 }
