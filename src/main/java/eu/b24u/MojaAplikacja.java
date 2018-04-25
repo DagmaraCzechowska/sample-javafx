@@ -32,6 +32,7 @@ public class MojaAplikacja extends Aplikacja {
 		}
 		Figura figura = null;
 
+
 		if (pamiecGry.czyKratkaJestPusta(kliknietyProstokat.x, kliknietyProstokat.y)) {
 			if (czyKolko) {
 				figura = Figura.KOLKO;
@@ -61,7 +62,18 @@ public class MojaAplikacja extends Aplikacja {
 			if (pamiecGry.czyKoniecGry()) {
 				koniecGry = true;
 				// TODO zwiekszanie przegranej lub wygranej jak rozroznic ?
+			} else {
+				int losX = Program.losujLiczbe(0, 600);
+				int losY = Program.losujLiczbe(0, 600);
+				zdarzenieKlikniecaMyszka(losX, losY, plotno);
 			}
+
+			// TODO Kiedy ma wykonac ruch BOT
+			// TODO Jakie kroki ma wykonac BOT ?
+			// 1. losowanie kratki
+			// 2. dodanie kratki do pamieci gry
+			// 3. rysowanie figury
+			// TODO wylosuj kratke ktora ma wybrac BOT
 
 		}
 		if (figura != null) {

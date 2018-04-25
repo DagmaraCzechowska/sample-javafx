@@ -205,8 +205,7 @@ public class PamiecGry implements InterfejsPamiecGry {
 		listaKratek.add(new Kratka(wspolrzednaPozioma, wspolrzednaPionowa, figura));
 	}
 
-	@Override
-	public Kratka pobierzKratke(int x, int y) {
+	public Kratka zmienWspolrzedneKliknietegoPunktuNaKratke(int x, int y) {
 		int wspolrzednaPionowa = -1;
 		int wspolrzednaPozioma = -1;
 		if (x < 200) {
@@ -228,9 +227,36 @@ public class PamiecGry implements InterfejsPamiecGry {
 		if (y > 400) {
 			wspolrzednaPionowa = 2;
 		}
+		return new Kratka(wspolrzednaPozioma, wspolrzednaPionowa);
+	}
+
+	@Override
+	public Kratka pobierzKratke(int x, int y) {
+		// int wspolrzednaPionowa = -1;
+		// int wspolrzednaPozioma = -1;
+		// if (x < 200) {
+		// wspolrzednaPozioma = 0;
+		// }
+		// if (x > 200 && x < 400) {
+		// wspolrzednaPozioma = 1;
+		// }
+		// if (x > 400) {
+		// wspolrzednaPozioma = 2;
+		// }
+		//
+		// if (y < 200) {
+		// wspolrzednaPionowa = 0;
+		// }
+		// if (y > 200 && y < 400) {
+		// wspolrzednaPionowa = 1;
+		// }
+		// if (y > 400) {
+		// wspolrzednaPionowa = 2;
+		// }
+		Kratka kliknietaKratka = zmienWspolrzedneKliknietegoPunktuNaKratke(x, y);
 		for (Iterator iterator = listaKratek.iterator(); iterator.hasNext();) {
 			Kratka kratka = (Kratka) iterator.next();
-			if (kratka.x == wspolrzednaPozioma && kratka.y == wspolrzednaPionowa) {
+			if (kratka.x == kliknietaKratka.x && kratka.y == kliknietaKratka.y) {
 				return kratka;
 			}
 		}
